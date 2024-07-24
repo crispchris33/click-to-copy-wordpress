@@ -1,0 +1,27 @@
+<!-- HTML for a clickable copy icon and text -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div id="copyContainer" style="display: flex; align-items: center; cursor: pointer;">
+  <i class="fas fa-copy" style="margin-right: 8px; color: black;"></i>
+  <span style="color: black;">Copy</span>
+</div>
+
+<input type="text" value="enter value to be copied here" id="copyText" style="position: absolute; left: -9999px;">
+
+<div id="customAlert" style="display: none; position: fixed; top: 20px; right: 20px; background-color: black; color: white; padding: 10px 20px; border-radius: 5px;">
+  Copied to clipboard!
+</div>
+
+<script>
+  document.getElementById("copyContainer").addEventListener("click", function() {
+    var copyText = document.getElementById("copyText");
+    copyText.select();
+    document.execCommand("copy");
+
+    var customAlert = document.getElementById("customAlert");
+    customAlert.style.display = 'block';
+    setTimeout(function() {
+      customAlert.style.display = 'none';
+    }, 2000);
+  });
+</script>
